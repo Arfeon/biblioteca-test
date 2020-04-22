@@ -9,11 +9,11 @@ import { Biblioteca } from '../modelos/biblioteca.model';
 })
 export class BibliotecaServiceService {
 
-  urlBiblioteca:string ="http://localhost:3000/api/test"
+  urlBiblioteca:string ="http://localhost:3000/api/"
   constructor(private http:HttpClient) { }
 
   getBibliotecas():Observable<Biblioteca[]>{
     console.log("servei get bibliotecas");
-    return this.http.get<Biblioteca[]>(this.urlBiblioteca);
+    return this.http.get<Biblioteca[]>(this.urlBiblioteca+'bibliotecas');
   }
 }

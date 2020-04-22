@@ -11,6 +11,11 @@ import { Biblioteca } from '../modelos/biblioteca.model';
 export class BibiliotecaComponent implements OnInit {
 
   bibliotecas:Biblioteca[];
+  cols = [  //Array amb les columnes que volem mostrar a la taula, el camp Field correspont al camp del model que farem servir i el HEader al text que es mostrarà
+    { field: 'biblioteca_id', header: 'Id' },  
+    { field: 'nombre', header: 'Nombre' },  
+    { field: 'direccion', header: 'Dirección' },  
+  ];  
   constructor(private http:HttpClient,private bibliotecaService:BibliotecaServiceService) { }
 
   ngOnInit(): void {

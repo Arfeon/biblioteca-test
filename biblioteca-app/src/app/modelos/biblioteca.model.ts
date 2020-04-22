@@ -1,5 +1,5 @@
 export class Biblioteca {
-    id:number;
+    biblioteca_id:number;
     nombre:string;
     direccion:string;
 }

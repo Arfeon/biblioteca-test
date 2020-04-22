@@ -30,3 +30,8 @@
     color: orangered;
     border-bottom: 2px solid orangered;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}

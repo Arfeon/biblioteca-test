@@ -1,7 +1,7 @@
 <div class="container">
-    <p-table [value]="bibliotecas" [columns]="cols" sortMode="multiple" [paginator]="true" [rows]="1">
+    <p-table [value]="libros" [columns]="cols" sortMode="multiple" [paginator]="true" [rows]="5">
         <ng-template pTemplate="caption">
-            Listado de Bibliotecas
+            Listado de Libros
         </ng-template>
         <ng-template pTemplate="header" let-columns>
             <tr>
@@ -13,9 +13,9 @@
                 <th colspan="2">Acciones</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-biblioteca let-columns="columns">
+        <ng-template pTemplate="body" let-libro let-columns="columns">
             <tr>
-                <td *ngFor="let col of columns">{{biblioteca[col.field]}}</td>
+                <td *ngFor="let col of columns">{{libro[col.field]}}</td>
                 <td>Eliminar</td>
                 <td>Agregar</td>
             </tr>

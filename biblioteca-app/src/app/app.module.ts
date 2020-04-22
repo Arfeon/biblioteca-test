@@ -8,13 +8,15 @@ import { BibiliotecaComponent } from './bibilioteca/bibilioteca.component';
 import { TopbarComponent } from './componentes/topbar/topbar.component';
 import {TableModule} from 'primeng/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { LibrosComponent } from './componentes/libros/libros.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BibiliotecaComponent,
-    TopbarComponent
+    TopbarComponent,
+    LibrosComponent
   ],
   imports: [
     BrowserModule,
