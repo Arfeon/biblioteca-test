@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="p-grid">
+        <form class="p-col-4 formulario">
+            <h1>Formulario para la Categoría</h1>
+            <div class="form-group p-col">
+                <label for="id" class="p-col">ID: </label>
+                <input type="number" class="p-col" pInputText name="id" [(ngModel)]="categoria.categoria_id" />
+            </div>
+            <div class="form-group p-col">
+                <label for="nombre" class="p-col">Nombre: </label>
+                <input type="text" class="p-col" pInputText name="nombre" [(ngModel)]="categoria.nombre" />
+            </div>
+            <div class="form-group p-col">
+                <p-button *ngIf="!modificando; else elseBlock" label="Crear" styleClass="ui-button-success" (onClick)="insertCategoria()"></p-button>
+                <ng-template #elseBlock>
+                    <p-button label="Modificar" styleClass="ui-button-success" (onClick)="modificarCategoria(categoria.categoria_id)"></p-button>
+                </ng-template>
+
+            </div>
+        </form>
+        <p-table [value]="categorias" [columns]="cols" sortMode="multiple" [paginator]="true" [rows]="3" class="p-col">
+            <ng-template pTemplate="caption">
+                Listado de Categorias
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                        <!--Icone per fer el sortin respecte el camp que correspont al field del component-->
+                    </th>
+                    <th colspan="2">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-categoria let-columns="columns">
+                <tr>
+                    <!--<td *ngFor="let col of columns">{{biblioteca[col.field]}}</td>-->
+                    <td>{{categoria.categoria_id}}</td>
+                    <td>{{categoria.nombre}}</td>
+                    <td>
+                        <p-button label="Modificar" styleClass="ui-button-info" (onClick)="getCategoriaById(categoria.categoria_id)"></p-button>
+                    </td>
+                    <td>
+                        <p-button label="Eliminar" styleClass="ui-button-danger" (onClick)="eliminarCategoria(categoria.categoria_id)"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

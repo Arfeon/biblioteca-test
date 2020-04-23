@@ -9,6 +9,11 @@ import { TopbarComponent } from './componentes/topbar/topbar.component';
 import {TableModule} from 'primeng/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LibrosComponent } from './componentes/libros/libros.component';
+import { DetallesBibliotecaComponent } from './componentes/detalles-biblioteca/detalles-biblioteca.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+import { CategoriasComponent } from './componentes/categorias/categorias.component';
+
 
 
 @NgModule({
@@ -16,14 +21,20 @@ import { LibrosComponent } from './componentes/libros/libros.component';
     AppComponent,
     BibiliotecaComponent,
     TopbarComponent,
-    LibrosComponent
+    LibrosComponent,
+    DetallesBibliotecaComponent,
+    CategoriasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     TableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ButtonModule
+    
 
   ],
   providers: [],
