@@ -1,0 +1,10 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    max-height: 10vh;
+}

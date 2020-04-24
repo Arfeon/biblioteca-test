@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="p-grid">
+        <form class="p-col-4 formulario">
+            <h1>Formulario para los Libros</h1>
+            <div class="form-group p-col">
+                <label for="id" class="p-col">ID: </label>
+                <input type="number" class="p-col" pInputText name="id" [(ngModel)]="nuevoLibro.libro_id" />
+            </div>
+            <div class="form-group p-col">
+                <label for="nombre" class="p-col">Nombre: </label>
+                <input type="text" class="p-col" pInputText name="nombre" [(ngModel)]="nuevoLibro.nombre" />
+            </div>
+            <div class="form-group p-col">
+                <label for="biblioetca" class="p-col">Biblioteca: </label>
+                <!--<input type="text" class="p-col" pInputText name="biblioteca" [(ngModel)]="nuevoLibro.biblioteca_id" />-->
+                <p-listbox [options]="bibliotecas" class="p-col llistat" [listStyle]="{'max-height':'100px'}" [(ngModel)]="bibliotecaSeleccionada" optionLabel="nombre" name="bibliotecasSeleccion" filter="filter"></p-listbox>
+            </div>
+            <div class="form-group p-col">
+                <!--
+                <label for="categoria" class="p-col">Categoria: </label>
+                <input type="text" class="p-col" pInputText name="categoria" [(ngModel)]="nuevoLibro.categoria_id" />
+                -->
+                <label for="categoria" class="p-col">Categoria: </label>
+                <p-listbox [options]="categorias" class="p-col llistat" [listStyle]="{'max-height':'100px'}" [(ngModel)]="categoriaSeleccionada" optionLabel="nombre" name="categoriasSeleccion" filter="filter"></p-listbox>
+            </div>
+            <div class="form-group p-col">
+                <p-button *ngIf="!modificando; else elseBlock" label="Crear" styleClass="ui-button-success" (onClick)="insertLibro()"></p-button>
+                <ng-template #elseBlock>
+                    <p-button label="Modificar" styleClass="ui-button-success" (onClick)="modificarLibro(nuevoLibro.libro_id)"></p-button>
+                    <p-button label="Limpiar" styleClass="ui-button-warning" (onClick)="limpiar()"></p-button>
+                </ng-template>
+            </div>
+        </form>
+        <p-table [value]="libros" [columns]="cols" sortMode="multiple" [paginator]="true" [rows]="5" class="p-col">
+            <ng-template pTemplate="caption">
+                Listado de Libros
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                        <!--Icone per fer el sortin respecte el camp que correspont al field del component-->
+                    </th>
+                    <th colspan="2">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-libro let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">{{libro[col.field]}}</td>
+                    <td>
+                        <p-button label="Modificar" styleClass="ui-button-info" (onClick)="getLibroById(libro['libro_id'])"></p-button>
+                    </td>
+                    <td>
+                        <p-button label="Eliminar" styleClass="ui-button-danger" (onClick)="eliminarLibro(libro['libro_id'])"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

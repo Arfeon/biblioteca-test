@@ -1,0 +1,53 @@
+<div class="container">
+    <p-table [value]="bibliotecas" [columns]="cols" sortMode="multiple" [paginator]="true" [rows]="3">
+        <ng-template pTemplate="caption">
+            Listado de Bibliotecas
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                    <!--Icone per fer el sortin respecte el camp que correspont al field del component-->
+                </th>
+                <th colspan="2">Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-biblioteca let-columns="columns">
+            <tr>
+                <!--<td *ngFor="let col of columns">{{biblioteca[col.field]}}</td>-->
+                <td>{{biblioteca.biblioteca_id}}</td>
+                <td>{{biblioteca.nombre}}</td>
+                <td>{{biblioteca.direccion}}</td>
+                <td>
+                    <a [routerLink]="[ '/bibliotecas', biblioteca.biblioteca_id]">
+                        <p-button label="Modificar" styleClass="ui-button-info"></p-button>
+                    </a>
+                </td>
+                <td>
+                    <p-button label="Eliminar" styleClass="ui-button-danger" (onClick)="eliminarBiblioteca(biblioteca.biblioteca_id)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <div class="p-grid container">
+        <form class="p-col-6 formulario" (ngSubmit)="insertBiblioteca()">
+            <h1>Formulario para la Biblioteca</h1>
+            <div class="form-group p-col">
+                <label for="id" class="p-col-2">ID: </label>
+                <input type="number" class="p-col-4" pInputText name="id" [(ngModel)]="nuevaBiblioteca.biblioteca_id" />
+            </div>
+            <div class="form-group p-col">
+                <label for="nombre" class="p-col-2">Nombre: </label>
+                <input type="text" class="p-col-4" pInputText name="nombre" [(ngModel)]="nuevaBiblioteca.nombre" />
+            </div>
+            <div class="form-group p-col">
+                <label for="nombre" class="p-col-2">Direccion: </label>
+                <input type="text" class="p-col-4" pInputText name="nombre" [(ngModel)]="nuevaBiblioteca.direccion" />
+            </div>
+            <div class="form-group p-col">
+                <p-button label="Crear" styleClass="ui-button-success" type="submit"></p-button>
+            </div>
+        </form>
+    </div>
+</div>

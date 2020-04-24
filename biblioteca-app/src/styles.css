@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+.container {
+    min-height: 100vh;
+    padding-top: 5vh;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+form h1 {
+    text-align: center;
+    margin: 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    /*max-height: 10vh;*/
+}

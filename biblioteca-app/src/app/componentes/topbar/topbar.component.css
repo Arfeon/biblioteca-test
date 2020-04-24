@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+}
+
+.logo {
+    display: flex;
+    font-weight: bolder;
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: flex-end;
+    font-weight: bolder;
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu li {
+    margin-right: 5%;
+}
+
+.menu li:hover {
+    color: orangered;
+    border-bottom: 2px solid orangered;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
