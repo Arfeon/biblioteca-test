@@ -18,5 +18,5 @@ form h1 {
 .form-group {
     display: flex;
     flex-direction: row;
-    max-height: 10vh;
+    /*max-height: 10vh;*/
 }

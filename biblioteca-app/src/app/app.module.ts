@@ -13,6 +13,7 @@ import { DetallesBibliotecaComponent } from './componentes/detalles-biblioteca/d
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
+import {ListboxModule} from 'primeng/listbox';
 
 
 
@@ -33,7 +34,8 @@ import { CategoriasComponent } from './componentes/categorias/categorias.compone
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    ListboxModule
     
 
   ],
