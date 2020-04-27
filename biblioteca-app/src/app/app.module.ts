@@ -15,9 +15,16 @@ import {ButtonModule} from 'primeng/button';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
 import {ListboxModule} from 'primeng/listbox';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
-import { AlquileresComponent } from './componentes/alquileres/alquileres.component';
+import { AlquilerComponent } from './componentes/alquiler/alquiler.component';
+import {CalendarModule} from 'primeng/calendar';
 
+//Registrar idiomes
+import { registerLocaleData } from '@angular/common';
+//Idiomes
+import localeEs from '@angular/common/locales/es';
+import { LOCALE_ID } from '@angular/core';
 
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
@@ -28,7 +35,7 @@ import { AlquileresComponent } from './componentes/alquileres/alquileres.compone
     DetallesBibliotecaComponent,
     CategoriasComponent,
     UsuariosComponent,
-    AlquileresComponent
+    AlquilerComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +46,14 @@ import { AlquileresComponent } from './componentes/alquileres/alquileres.compone
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
-    ListboxModule
+    ListboxModule,
+    CalendarModule
     
 
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

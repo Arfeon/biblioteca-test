@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="p-grid">
+        <form class="p-col-4 formulario">
+            <h1>Formulario para los Alquileres</h1>
+            <div class="form-group p-col">
+                <label for="id" class="p-col">ID: </label>
+                <input type="number" class="p-col" pInputText name="id" [(ngModel)]="alquiler.alquiler_id" [disabled]="true" />
+            </div>
+            <div class="form-group p-col">
+                <label for="fecha_alquiler" class="p-col">Fecha Alquiler: </label>
+                <p-calendar [(ngModel)]="alquiler.fecha_alquiler" name="fecha_alquiler_calendar" [showIcon]="true" dateFormat="yy/mm/dd" placeholder="YYYY-MM-DD"></p-calendar>
+                <!--<input type="text" class="p-col" pInputText name="fecha_alquiler" [(ngModel)]="alquiler.fecha_alquiler" />-->
+            </div>
+            <div class="form-group p-col">
+                <label for="fecha_devolucion" class="p-col">Fecha Devolución: </label>
+                <p-calendar [(ngModel)]="alquiler.fecha_devolucion" name="fecha_devolucion_calendar" [showIcon]="true" dateFormat="yy/mm/dd" placeholder="YYYY/MM/DD"></p-calendar>
+                <!--><input type="text" class="p-col" pInputText name="fecha_devolucion" [(ngModel)]="alquiler.fecha_devolucion" />-->
+            </div>
+            <div class="form-group p-col">
+                <label for="libro_nombre" class="p-col">Libro nombre: </label>
+                <p-listbox [options]="libros" class="p-col llistat" [listStyle]="{'max-height':'100px'}" [(ngModel)]="libroSeleccionado" optionLabel="nombre" name="librosSeleccion" filter="filter"></p-listbox>
+                <!--<input type="text" class="p-col" pInputText name="libro_nombre" [(ngModel)]="alquiler.libro_nombre" />-->
+            </div>
+            <div class="form-group p-col">
+                <label for="usuario_nombre" class="p-col">Usuario nombre: </label>
+                <p-listbox [options]="usuarios" class="p-col llistat" [listStyle]="{'max-height':'100px'}" [(ngModel)]="usuarioSeleccionado" optionLabel="nombre" name="usuariosSeleccion" filter="filter"></p-listbox>
+                <!--<input type="text" class="p-col" pInputText name="usuario_nombre" [(ngModel)]="alquiler.usuario_nombre" />-->
+            </div>
+            <div class="form-group p-col">
+                <p-button *ngIf="!modificando; else elseBlock" label="Crear" styleClass="ui-button-success" (onClick)="insertAlquiler()"></p-button>
+                <ng-template #elseBlock>
+                    <p-button label="Modificar" styleClass="ui-button-success" (onClick)="modificarAlquiler()"></p-button>
+                    <p-button label="Limpiar" styleClass="ui-button-warning" (onClick)="limpiar()"></p-button>
+                </ng-template>
+
+            </div>
+        </form>
+        <p-table [value]="alquileres" [columns]="cols" sortMode="multiple" [paginator]="true" [rows]="5" class="p-col">
+            <ng-template pTemplate="caption">
+                Listado de Alquileres
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                        <!--Icone per fer el sortin respecte el camp que correspont al field del component-->
+                    </th>
+                    <th colspan="2">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-alquiler let-columns="columns">
+                <tr>
+                    <!--<td *ngFor="let col of columns">{{alquiler[col.field]}}</td>-->
+                    <td>{{alquiler.alquiler_id}}</td>
+                    <td>{{alquiler.fecha_alquiler | date:'EEEE dd, MMM yyyy'}}</td>
+                    <td>{{alquiler.fecha_devolucion | date:'EEEE dd, MMM yyyy'}}</td>
+                    <td>{{alquiler.libro_id}}</td>
+                    <td>{{alquiler.libro_nombre}}</td>
+                    <td>{{alquiler.usuario_id}}</td>
+                    <td>{{alquiler.usuario_nombre}}</td>
+
+
+                    <td>
+                        <p-button label="Modificar" styleClass="ui-button-info" (onClick)="getAlquilerById(alquiler.alquiler_id)"></p-button>
+                    </td>
+                    <td>
+                        <p-button label="Eliminar" styleClass="ui-button-danger" (onClick)="eliminarAlquiler(alquiler.alquiler_id)"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

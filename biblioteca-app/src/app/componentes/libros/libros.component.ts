@@ -91,6 +91,8 @@ export class LibrosComponent implements OnInit {
     });
   }
   insertLibro(){
+    this.nuevoLibro.biblioteca_id=this.bibliotecaSeleccionada.biblioteca_id;
+    this.nuevoLibro.categoria_id=this.categoriaSeleccionada.categoria_id;
     this.libroService.postLibro(this.nuevoLibro).subscribe(()=>this.getAllLibros());
   }
   modificarLibro(id:number){
