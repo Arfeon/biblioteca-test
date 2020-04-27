@@ -18,6 +18,9 @@ export class LibrosService {
   getAllLibros():Observable<Libro[]>{
     return this.http.get<Libro[]>(this.urlLibros);
   }
+  getAllLibrosAlquileres():Observable<Libro[]>{
+    return this.http.get<Libro[]>("http://localhost:3000/api/libros-alquileres");
+  }
   getLibroById(id:number):Observable<Libro>{
     return this.http.get<Libro>(this.urlLibros+id);
   }

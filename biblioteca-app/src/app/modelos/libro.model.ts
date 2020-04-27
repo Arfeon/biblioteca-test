@@ -5,4 +5,5 @@ export class Libro {
     biblioteca_id?:number;
     categoria_nombre:string;
     biblioteca:string;
+    fecha_devolucion?:Date;
 }
