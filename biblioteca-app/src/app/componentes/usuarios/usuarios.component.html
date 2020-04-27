@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="p-grid">
+        <form class="p-col-4 formulario">
+            <h1>Formulario para los Usuarios</h1>
+            <div class="form-group p-col">
+                <label for="id" class="p-col">ID: </label>
+                <input type="number" class="p-col" pInputText name="id" [(ngModel)]="usuario.usuario_id" />
+            </div>
+            <div class="form-group p-col">
+                <label for="nombre" class="p-col">Nombre: </label>
+                <input type="text" class="p-col" pInputText name="nombre" [(ngModel)]="usuario.nombre" />
+            </div>
+            <div class="form-group p-col">
+                <label for="apellidos" class="p-col">Apellidos: </label>
+                <input type="text" class="p-col" pInputText name="apellidos" [(ngModel)]="usuario.apellidos" />
+            </div>
+            <div class="form-group p-col">
+                <p-button *ngIf="!modificando; else elseBlock" label="Crear" styleClass="ui-button-success" (onClick)="insertUsuario()"></p-button>
+                <ng-template #elseBlock>
+                    <p-button label="Modificar" styleClass="ui-button-success" (onClick)="modificarUsuario()"></p-button>
+                    <p-button label="Limpiar" styleClass="ui-button-warning" (onClick)="limpiar()"></p-button>
+                </ng-template>
+
+            </div>
+        </form>
+        <p-table [value]="usuarios" [columns]="cols" sortMode="multiple" [paginator]="true" [rows]="5" class="p-col">
+            <ng-template pTemplate="caption">
+                Listado de Usuarios
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                        <!--Icone per fer el sortin respecte el camp que correspont al field del component-->
+                    </th>
+                    <th colspan="2">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-usuario let-columns="columns">
+                <tr>
+                    <!--<td *ngFor="let col of columns">{{biblioteca[col.field]}}</td>-->
+                    <td>{{usuario.usuario_id}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellidos}}</td>
+                    <td>
+                        <p-button label="Modificar" styleClass="ui-button-info" (onClick)="getUsuarioById(usuario.usuario_id)"></p-button>
+                    </td>
+                    <td>
+                        <p-button label="Eliminar" styleClass="ui-button-danger" (onClick)="eliminarUsuario(usuario.usuario_id)"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

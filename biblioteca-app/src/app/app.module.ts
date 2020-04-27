@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
 import {ListboxModule} from 'primeng/listbox';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { AlquileresComponent } from './componentes/alquileres/alquileres.component';
 
 
 
@@ -24,7 +26,9 @@ import {ListboxModule} from 'primeng/listbox';
     TopbarComponent,
     LibrosComponent,
     DetallesBibliotecaComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    UsuariosComponent,
+    AlquileresComponent
   ],
   imports: [
     BrowserModule,
