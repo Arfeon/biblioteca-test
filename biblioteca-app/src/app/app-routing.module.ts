@@ -4,6 +4,8 @@ import { BibiliotecaComponent } from './bibilioteca/bibilioteca.component';
 import { LibrosComponent } from './componentes/libros/libros.component';
 import { DetallesBibliotecaComponent } from './componentes/detalles-biblioteca/detalles-biblioteca.component';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { AlquilerComponent } from './componentes/alquiler/alquiler.component';
 
 
 const routes: Routes = [
@@ -11,7 +13,9 @@ const routes: Routes = [
   {path:'bibliotecas', component:BibiliotecaComponent},
   {path:'bibliotecas/:id',component:DetallesBibliotecaComponent},
   {path:'libros',component:LibrosComponent},
-  {path:'categorias',component:CategoriasComponent}
+  {path:'categorias',component:CategoriasComponent},
+  {path:'usuarios',component:UsuariosComponent},
+  {path:'alquileres',component:AlquilerComponent}
 
 ];
 

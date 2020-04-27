@@ -72,6 +72,9 @@ export class LibrosComponent implements OnInit {
     });
     
   }
+  getAllLibrosAlquileres(){
+    this.libroService.getAllLibrosAlquileres().subscribe(data => this.libros=data);
+  }
   getLibroById(id:number){
     this.libroService.getLibroById(id).subscribe(data=>{
       this.nuevoLibro=data[0];
@@ -88,6 +91,8 @@ export class LibrosComponent implements OnInit {
     });
   }
   insertLibro(){
+    this.nuevoLibro.biblioteca_id=this.bibliotecaSeleccionada.biblioteca_id;
+    this.nuevoLibro.categoria_id=this.categoriaSeleccionada.categoria_id;
     this.libroService.postLibro(this.nuevoLibro).subscribe(()=>this.getAllLibros());
   }
   modificarLibro(id:number){
