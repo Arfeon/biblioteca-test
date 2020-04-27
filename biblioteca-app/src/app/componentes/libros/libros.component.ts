@@ -72,6 +72,9 @@ export class LibrosComponent implements OnInit {
     });
     
   }
+  getAllLibrosAlquileres(){
+    this.libroService.getAllLibrosAlquileres().subscribe(data => this.libros=data);
+  }
   getLibroById(id:number){
     this.libroService.getLibroById(id).subscribe(data=>{
       this.nuevoLibro=data[0];
